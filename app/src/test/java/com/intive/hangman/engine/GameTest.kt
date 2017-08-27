@@ -29,7 +29,7 @@ class GameTest {
     fun `wrong letter suggested`() {
         val contains = hangman.suggestLetter('Z')
 
-        assertFalse(contains)
+        assertTrue(contains)
         assertEquals(1, hangman.wrongAnswers)
     }
 
