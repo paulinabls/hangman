@@ -1,16 +1,18 @@
 package com.example
 
 import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.dsl.describe
+import org.jetbrains.spek.api.dsl.given
+import org.jetbrains.spek.api.dsl.it
+import org.jetbrains.spek.api.dsl.on
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 
-//@RunWith(JUnitPlatform::class)
 class GameTest : Spek({
-    given("a game") {
+    describe("a game") {
         val hangman = Game(password = "microwave", maxWrongAnswers = 20)
-
 
         on("freshly created") {
             it("has 0 wrong answers") {

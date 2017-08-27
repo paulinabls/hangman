@@ -1,5 +1,6 @@
 package com.intive.hangman.engine
 
+import com.intive.hangman.TextUtils
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -29,7 +30,7 @@ class GameTest {
     fun `wrong letter suggested`() {
         val contains = hangman.suggestLetter('Z')
 
-        assertTrue(contains)
+        assertFalse(contains)
         assertEquals(1, hangman.wrongAnswers)
     }
 
@@ -42,8 +43,7 @@ class GameTest {
 
     @Test
     fun `wrong range test`() {
-        val charRange = 'A'..'z'
-        val wrongLettersRange = charRange.filterNot { c -> "microwave".contains(c, true)}
+        val wrongLettersRange = TextUtils.createAlphabetRangeNotIn("microwave")
 
         for (c in wrongLettersRange) {
             assertFalse(hangman.suggestLetter(c))
