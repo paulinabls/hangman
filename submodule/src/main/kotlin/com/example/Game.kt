@@ -6,11 +6,26 @@ class Game(val password: String, val maxWrongAnswers: Int) {
         private set
     private val dashedWord: StringBuffer = StringBuffer(password.length)
 
-    val dashedPassword get() = dashedWord.toString()
+    val dashedPassword : String get() {
+        System.err.println("dashedPassword get " + dashedWord)
+        return dashedWord.toString()
+    }
 
     init {
-        password.forEach {dashedWord.append('_')}
+        appendDashes()
     }
+
+    private fun appendDashes() {
+        password.forEach { dashedWord.append('_') }
+    }
+
+    fun reset() {
+        System.out.println("\n reset")
+        dashedWord.delete(0,dashedWord.length)
+        appendDashes()
+        wrongAnswers = 0
+    }
+
     fun suggestLetter(letter: Char): Boolean {
         val contains = password.contains(letter, true)
         if (contains) {
@@ -18,6 +33,7 @@ class Game(val password: String, val maxWrongAnswers: Int) {
         } else {
             wrongAnswers++
         }
+        System.err.println("suggestLetter $letter")
         return contains
     }
 
