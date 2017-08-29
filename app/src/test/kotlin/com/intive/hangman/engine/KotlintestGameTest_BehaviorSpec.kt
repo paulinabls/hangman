@@ -1,6 +1,7 @@
 package com.intive.hangman.engine
 
 import com.intive.hangman.TextUtils
+import com.winterbe.expekt.should
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.matchers.shouldEqual
 import io.kotlintest.specs.BehaviorSpec
@@ -38,8 +39,8 @@ class KotlintestGameTest_BehaviorSpec : BehaviorSpec() {
                 val alphabetRangeNotIn = TextUtils.createAlphabetRangeNotIn(password)
 
                 for (c in alphabetRangeNotIn) {
-                    Then("shold return false for letter $c") {
-                        game.suggestLetter(c)
+                    Then("should return false for letter $c") {
+                        game.suggestLetter(c).should.be.`false`
                     }
                 }
             }
