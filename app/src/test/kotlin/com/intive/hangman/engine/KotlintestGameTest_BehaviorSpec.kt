@@ -21,17 +21,11 @@ class KotlintestGameTest_BehaviorSpec : BehaviorSpec() {
                     game.dashedPassword.shouldEqual("_________")
                 }
             }
-        }
-
-        Given("new game") {
-            val game = Game(password = password, maxWrongAnswers = 20)
 
             When("correct letter suggested") {
-                val contains = game.suggestLetter('A')
-
                 for (c in password) {
                     Then("returns true for letter $c") {
-                        contains.shouldBe(true)
+                        game.suggestLetter(c).shouldBe(true)
                     }
 
                     Then("number of wrong answers did not increase") {
@@ -39,10 +33,6 @@ class KotlintestGameTest_BehaviorSpec : BehaviorSpec() {
                     }
                 }
             }
-        }
-
-        Given("new game") {
-            val game = Game(password = password, maxWrongAnswers = 20)
 
             When("any wrong letter suggested") {
                 val alphabetRangeNotIn = TextUtils.createAlphabetRangeNotIn(password)

@@ -1,7 +1,5 @@
 package com.intive.hangman.engine
 
-import org.jetbrains.spek.api.Spek
-
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
@@ -11,9 +9,9 @@ import org.junit.Assert
 import org.junit.runner.RunWith
 
 @RunWith(JUnitSpekRunner::class)
-class SubjectGameTest: SubjectSpek <Game> ({
-    subject{Game(password = "microwave", maxWrongAnswers = 20)}
-    given ("new game") {
+class SubjectGameTest : SubjectSpek <Game>({
+    subject { Game(password = "microwave", maxWrongAnswers = 20) }
+    given("new game") {
         on("created") {
             it("has 0 wrong answers") {
                 Assert.assertEquals(0, subject.wrongAnswers)
