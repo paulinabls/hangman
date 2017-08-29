@@ -2,12 +2,15 @@ package com.intive.hangman.engine
 
 import com.intive.hangman.TextUtils
 import org.jetbrains.spek.api.Spek
-
+import org.jetbrains.spek.api.dsl.describe
+import org.jetbrains.spek.api.dsl.given
+import org.jetbrains.spek.api.dsl.it
+import org.jetbrains.spek.api.dsl.on
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import kotlin.test.assertFalse
 
-
+//@RunWith(JUnitPlatform::class)
 class SpekGameTest : Spek({
     describe("a game") {
         given("newly created game") {
@@ -43,8 +46,6 @@ class SpekGameTest : Spek({
                 }
             }
         }
-
-
 
     }
 })
