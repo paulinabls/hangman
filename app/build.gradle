@@ -10,7 +10,6 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         jackOptions {
             enabled true
         }
@@ -49,6 +48,7 @@ buildscript {
 
 repositories {
     maven { url "http://dl.bintray.com/jetbrains/spek" }
+    mavenCentral()
 }
 
 dependencies {
@@ -61,14 +61,14 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     testCompile 'junit:junit:4.12'
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     testCompile 'org.jetbrains.spek:spek:1.0.25'
     testCompile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     testCompile 'org.jetbrains.spek:spek-subject-extension:1.1.2'
-
+    testCompile 'io.kotlintest:kotlintest:2.0.5'
+    testCompile 'com.winterbe:expekt:0.5.0'
 }
 repositories {
     mavenCentral()
