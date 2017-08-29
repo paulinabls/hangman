@@ -9,8 +9,9 @@ import io.kotlintest.specs.BehaviorSpec
 class KotlintestGameTest_BehaviorSpec : BehaviorSpec() {
     init {
         val password = "microwave"
+        //password = Gen.string().nextPrintableString(10)  <- generator
 
-        Given("new game") {
+        Given("new game with password: $password") {
             val game = Game(password = password, maxWrongAnswers = 20)
 
             When("created") {
@@ -19,7 +20,8 @@ class KotlintestGameTest_BehaviorSpec : BehaviorSpec() {
                 }
 
                 Then("has all letters dashed") {
-                    game.dashedPassword.shouldEqual("_________")
+                    val length = password.length
+                    game.dashedPassword.should.match(Regex("_{$length}")) //expekt
                 }
             }
 
