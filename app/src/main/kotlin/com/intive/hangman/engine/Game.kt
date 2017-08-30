@@ -1,6 +1,8 @@
 package com.intive.hangman.engine
 
-class Game(val password: String, val maxWrongAnswers: Int) {
+class Game(val password: String) {
+
+    val MAX_WRONG_ANSWERS = 9
 
     var wrongAnswers: Int = 0
         private set

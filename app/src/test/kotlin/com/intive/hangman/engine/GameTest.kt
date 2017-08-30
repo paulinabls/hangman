@@ -6,7 +6,7 @@ import org.junit.Test
 
 class GameTest {
 
-    val hangman = Game(password = "microwave", maxWrongAnswers = 20)
+    val hangman = Game(password = "microwave")
 
     @Test
     fun `new game has 0 wrong answers`() {
