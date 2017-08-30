@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion 21
@@ -35,7 +34,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.0.0-$junit_minor_version"
     }
 }
 
@@ -44,17 +42,6 @@ repositories {
     jcenter()
     maven { url "http://dl.bintray.com/jetbrains/spek" }
     maven { url "http://repository.jetbrains.com/all" }
-}
-
-
-junitPlatform {
-    jupiterVersion "5.0.0-$junit_minor_version"
-    vintageVersion "4.12.0-$junit_minor_version"
-    filters {
-        engines {
-            include 'spek'
-        }
-    }
 }
 
 dependencies {
@@ -79,8 +66,6 @@ dependencies {
     testCompile "org.jetbrains.spek:spek-subject-extension:$spek_version"
 
     testCompile 'junit:junit:4.12'
-    testCompile "org.junit.platform:junit-platform-runner:1.0.0-$junit_minor_version"
-    testCompile "org.junit.platform:junit-platform-launcher:1.0.0-$junit_minor_version"
     testCompile "org.junit.vintage:junit-vintage-engine:4.12.0-$junit_minor_version"
     testCompile "org.junit.jupiter:junit-jupiter-engine:5.0.0-$junit_minor_version"
 
