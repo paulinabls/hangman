@@ -7,7 +7,7 @@ import org.jetbrains.spek.subject.SubjectSpek
 import org.junit.Assert
 
 class SubjectGameTest : SubjectSpek<Game>({
-    subject { Game(password = "microwave", maxWrongAnswers = 20) }
+    subject { Game(password = "microwave") }
     given("new game") {
         on("created") {
             it("has 0 wrong answers") {

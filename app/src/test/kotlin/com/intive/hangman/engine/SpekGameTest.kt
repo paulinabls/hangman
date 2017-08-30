@@ -14,7 +14,7 @@ import kotlin.test.assertFalse
 class SpekGameTest : Spek({
     describe("a game") {
         given("newly created game") {
-            val hangman = Game(password = "microwave", maxWrongAnswers = 20)
+            val hangman = Game(password = "microwave")
             it("has 0 wrong answers") {
                 assertEquals(0, hangman.wrongAnswers)
             }
@@ -24,7 +24,7 @@ class SpekGameTest : Spek({
             }
         }
 
-        val hangman = Game(password = "microwave", maxWrongAnswers = 20)
+        val hangman = Game(password = "microwave")
 
         on("correct letter suggested") {
             val contains = hangman.suggestLetter('A')

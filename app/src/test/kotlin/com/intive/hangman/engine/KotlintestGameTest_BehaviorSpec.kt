@@ -12,7 +12,7 @@ class KotlintestGameTest_BehaviorSpec : BehaviorSpec() {
         //password = Gen.string().nextPrintableString(10)  <- generator
 
         Given("new game with password: $password") {
-            val game = Game(password = password, maxWrongAnswers = 20)
+            val game = Game(password = password)
 
             When("created") {
                 Then("has 0 wrong answers") {
