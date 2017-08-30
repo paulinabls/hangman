@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion 21
@@ -10,19 +11,13 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-        jackOptions {
-            enabled true
-        }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
     }
 
     sourceSets {
@@ -30,7 +25,6 @@ android {
         test.java.srcDirs += 'src/test/kotlin'
     }
 }
-
 
 buildscript {
     repositories {
@@ -41,41 +35,54 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-RC2'
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.0.0-$junit_minor_version"
     }
 }
 
-
 repositories {
-    maven { url "http://dl.bintray.com/jetbrains/spek" }
     mavenCentral()
+    jcenter()
+    maven { url "http://dl.bintray.com/jetbrains/spek" }
+    maven { url "http://repository.jetbrains.com/all" }
+}
+
+
+junitPlatform {
+    jupiterVersion "5.0.0-$junit_minor_version"
+    vintageVersion "4.12.0-$junit_minor_version"
+    filters {
+        engines {
+            include 'spek'
+        }
+    }
 }
 
 dependencies {
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile('com.android.support.test.espresso:espresso-core:2.2.2') {
-        exclude group: 'com.android.support',
-                module: 'support-annotations'
-    }
+
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    testCompile 'junit:junit:4.12'
+    testCompile('com.android.support.test.espresso:espresso-core:2.2.2') {
+        exclude group: 'com.android.support',
+                module: 'support-annotations'
+    }
+
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-    testCompile 'org.jetbrains.spek:spek:1.0.25'
     testCompile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    testCompile 'org.jetbrains.spek:spek-subject-extension:1.1.2'
     testCompile 'io.kotlintest:kotlintest:2.0.5'
     testCompile 'com.winterbe:expekt:0.5.0'
-}
-repositories {
-    mavenCentral()
-//    jcenter()
-    maven { url "http://dl.bintray.com/jetbrains/spek" }
-    maven {
-        url "http://repository.jetbrains.com/all"
-    }
+
+    testCompile "org.jetbrains.spek:spek-api:$spek_version"
+    testCompile "org.jetbrains.spek:spek-junit-platform-engine:$spek_version"
+    testCompile "org.jetbrains.spek:spek-subject-extension:$spek_version"
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.junit.platform:junit-platform-runner:1.0.0-$junit_minor_version"
+    testCompile "org.junit.platform:junit-platform-launcher:1.0.0-$junit_minor_version"
+    testCompile "org.junit.vintage:junit-vintage-engine:4.12.0-$junit_minor_version"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:5.0.0-$junit_minor_version"
+
 }
 
