@@ -8,9 +8,11 @@ import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 import org.junit.Assert
 import org.junit.Assert.assertEquals
+import org.junit.platform.runner.JUnitPlatform
+import org.junit.runner.RunWith
 import kotlin.test.assertFalse
 
-//@RunWith(JUnitPlatform::class)
+@RunWith(JUnitPlatform::class)
 class SpekGameTest : Spek({
     describe("a game") {
         given("newly created game") {
