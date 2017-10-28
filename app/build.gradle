@@ -4,7 +4,7 @@ apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.intive.hangman"
         minSdkVersion 21
@@ -31,11 +31,12 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url "http://dl.bintray.com/jetbrains/spek" }
+        maven { url 'https://maven.google.com' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.0.0-$junit_minor_version"
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.0.11"
     }
 }
 
@@ -79,6 +80,7 @@ dependencies {
     testCompile "org.jetbrains.spek:spek-subject-extension:$spek_version"
 
     testCompile 'junit:junit:4.12'
+    testCompileOnly junit5EmbeddedRuntime()
     testCompile "org.junit.platform:junit-platform-runner:1.0.0-$junit_minor_version"
     testCompile "org.junit.platform:junit-platform-launcher:1.0.0-$junit_minor_version"
     testCompile "org.junit.vintage:junit-vintage-engine:4.12.0-$junit_minor_version"
